@@ -405,27 +405,27 @@ export default function QRLogin() {
         ) : (
           <div className="space-y-4">
             <div className="text-center">
-              <div className="relative inline-block">
+              <div className="inline-block">
                 <img
                   src={qrData.qrCode}
                   alt="QR Code"
                   className="mx-auto border border-white/20 rounded-lg"
                   style={{ maxWidth: '200px' }}
                 />
-                {typeof remainingSeconds === 'number' && (
-                  <div
-                    className={`absolute -top-2 -right-2 ${
-                      remainingSeconds <= 10 ? 'bg-red-600 animate-pulse' : 'bg-black/80'
-                    } text-white text-xs px-2 py-1 rounded-md border border-white/20`}
-                  >
-                    {`${Math.floor(remainingSeconds / 60)
-                      .toString()
-                      .padStart(2, '0')}:${(remainingSeconds % 60)
-                      .toString()
-                      .padStart(2, '0')}`}
-                  </div>
-                )}
               </div>
+              {typeof remainingSeconds === 'number' && (
+                <div
+                  className={`mt-2 ${
+                    remainingSeconds <= 10 ? 'text-red-300 animate-pulse' : 'text-white/90'
+                  } text-sm font-mono`}
+                >
+                  {`${Math.floor(remainingSeconds / 60)
+                    .toString()
+                    .padStart(2, '0')}:${(remainingSeconds % 60)
+                    .toString()
+                    .padStart(2, '0')}`}
+                </div>
+              )}
             </div>
             <div className="text-sm text-white/80">
               <p className="font-medium">Instructions:</p>
